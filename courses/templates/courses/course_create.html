@@ -1,0 +1,43 @@
+{% extends 'base_layout.html' %}
+
+{% block content %}
+<div class="wrapper">
+
+  <nav id="sidebar">
+    <div class="sidebar-header">
+      <h3><a href="{% url 'courses:index' %}"> Learning Center</a></h3>        
+    </div>
+
+    <ul class="list-unstyled components">
+      <p>Alex Zhang</p>
+      <li class="active">
+        <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Class</a>
+        <ul class="collapse list-unstyled" id="homeSubmenu">
+          <div class = "courses"> 
+            {% for course in courses %}
+              <li><a href="{% url 'courses:detail' id=course.id %}">{{course.name}}</a></li>
+            {% endfor %}
+          </div>
+        </ul>
+      </li>
+      <li><a href="#">Profile</a></li>
+      <li><a href="#">Discussions</a></li>
+    </ul>
+
+  </nav>
+
+  <div id="content">
+    
+	<div class="create-course">
+		<p>Create a course</p>
+		<form class="site-form" action="{% url 'courses:create' %}" method="post" enctype="multipart/form-data">
+			{% csrf_token %}
+			{{form}}
+			<input type="submit" name="Create">
+		</form>
+	</div>
+  </div>
+</div>
+
+
+{% endblock %}

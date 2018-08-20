@@ -1,0 +1,65 @@
+{% extends 'base_layout.html' %}
+
+{% block content %}
+<div class="wrapper">
+
+  <nav id="sidebar">
+    <div class="sidebar-header">
+      <h3><a href="{% url 'courses:index' %}"> Learning Center</a></h3>        
+    </div>
+
+    <ul class="list-unstyled components">
+      <p>{{ user.username }}</p>
+      <li class="active">
+        <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Class</a>
+        <ul class="collapse list-unstyled" id="homeSubmenu">
+          <div class = "courses"> 
+            {% for course in courses %}
+              <li><a href="{% url 'courses:detail' id=course.id %}">{{course.name}}</a></li>
+            {% endfor %}
+          </div>
+        </ul>
+      </li>
+      <li><a href="#">Profile</a></li>
+      <li><a href="#">Discussions</a></li>
+    </ul>
+  </nav>
+
+  <div id="content">
+
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <div class="container-fluid">
+        <button type="button" id="sidebarCollapse" class="btn btn-info">
+          <i class="fas fa-align-left"></i>
+          <span>Toggle Sidebar</span>
+        </button>            
+      </div>
+      <div>             
+        <form class="logout-link" action="{% url 'accounts:logout' %}" method="post">
+          {% csrf_token %}
+          <button type="submit" class="btn btn-info">Logout</button>
+        </form>
+      </div> 
+    </nav>
+
+    <p align="justify"> This is an example of the E learning website</p>
+
+    <div class = "courses"> 
+    {% for course in courses %}
+      <li>
+        <a href="{% url 'courses:detail' id=course.id %}">{{course.name}}</a>
+        <p> {{course.body}}</p>
+      </li>
+    {% endfor %}
+    </div>
+
+    <nav>
+      <div class="container-fluid">
+        <form action="{% url 'courses:create' %}">
+          <button type="submit" class="btn btn-info">Create Course</button>
+        </form>        
+      </div>
+    </nav>
+  </div>
+</div>
+{% endblock %}
