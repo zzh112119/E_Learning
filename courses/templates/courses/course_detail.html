@@ -1,30 +1,6 @@
 {% extends 'base_layout.html' %}
 
 {% block content %}
-<div class="wrapper">
-
-  <nav id="sidebar">
-    <div class="sidebar-header">
-      <h3><a href="{% url 'courses:index' %}"> Learning Center</a></h3>        
-    </div>
-
-    <ul class="list-unstyled components">
-      <p>Welcome, {{user.username}}</p>
-      <li class="active">
-        <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Class</a>
-        <ul class="collapse list-unstyled" id="homeSubmenu">
-          <div class = "courses"> 
-            {% for course in courses %}
-              <li><a href="{% url 'courses:detail' id=course.id %}">{{course.name}}</a></li>
-            {% endfor %}
-          </div>
-        </ul>
-      </li>
-      <li><a href="#">Profile</a></li>
-      <li><a href="#">Discussions</a></li>
-    </ul>
-
-  </nav>
 
   <div id="content">
     
@@ -45,13 +21,16 @@
   		<p>
   			{{course.body}}
   		</p>
-
-      <div class="embed-responsive embed-responsive-16by9">
+    <div class="quiz">
+      <a href="{% url 'courses:quiz_list' course.id %}">
+        <button>Quizzes</button>      
+      </a>
+    </div>
+<!--       <div class="embed-responsive embed-responsive-16by9">
         <iframe class="embed-responsive-item" width="1211" height="681" src="https://www.youtube.com/embed/vjSohj-Iclc" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-      </div>        
+      </div>         -->
   	</div>
   </div>
-</div>
 
 
 {% endblock %}

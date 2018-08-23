@@ -1,0 +1,19 @@
+{% extends 'base_layout.html' %}
+
+{% block content %}
+<div class='site-form'>
+	<h1>Choose your signup type</h1>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-sm">
+				<a href="{% url 'accounts:student_signup' %}"><button class="btn btn-lg btn-primary btn-block"type="submit" > I'm a Student</button></a>		
+			</div>
+			
+			<div class="col-sm">
+				<a href="{% url 'accounts:teacher_signup' %}"><button class="btn btn-lg btn-primary btn-block"type="submit" > I'm a Teacher</button></a>
+			</div>
+		</div>
+	</div>
+	<p class="mt-5 mb-3 text-muted">© 2017-2018</p>	
+</div>
+{% endblock %}

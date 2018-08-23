@@ -19,21 +19,21 @@
       </div> 
     </nav>
 
-    <p align="justify"> This is an example of the E learning website</p>
-
-    <div class = "courses"> 
-    {% for course in courses %}
+    <h2 class="mb-3">Quizzes</h2>
+    <div class = "quizzes"> 
+    {% for quiz in quizzes %}
       <li>
-        <a href="{% url 'courses:detail' id=course.id %}">{{course.name}}</a>
-        <p> {{course.body}}</p>
+        <a href='#'>{{quiz.name}}</a>
+        <p> {{quiz.course}}</p>
+        <p>{{quiz.owner}}</p>
       </li>
     {% endfor %}
     </div>
 
     <nav>
       <div class="container-fluid">
-        <form action="{% url 'courses:create' %}">
-          <button type="submit" class="btn btn-info">Create Course</button>
+        <form action="{% url 'courses:quiz_create' id=course.id %}">
+          <button type="submit" class="btn btn-info">Create Quiz</button>
         </form>        
       </div>
     </nav>

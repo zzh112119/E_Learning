@@ -19,24 +19,27 @@
       </div> 
     </nav>
 
-    <p align="justify"> This is an example of the E learning website</p>
+    <h2 class="mb-3">Quizzes</h2>
+    <h3 class="mb-3">Add a new quiz</h2>
 
-    <div class = "courses"> 
-    {% for course in courses %}
-      <li>
-        <a href="{% url 'courses:detail' id=course.id %}">{{course.name}}</a>
-        <p> {{course.body}}</p>
-      </li>
-    {% endfor %}
+    <div class="quizzes create_quiz"> 
+      <div class="row">
+        <div class="col-md-6 col-12">
+          <form method="post" novalidate action="{% url 'courses:quiz_create' %}">
+            {% csrf_token %}
+            {{ form }}
+            <button type="submit" class="btn"> Save</button>
+          </form>
+        </div>      
+      </div>
     </div>
 
-    <nav>
+    <!-- <nav>
       <div class="container-fluid">
         <form action="{% url 'courses:create' %}">
           <button type="submit" class="btn btn-info">Create Course</button>
         </form>        
       </div>
-    </nav>
+    </nav> -->
   </div>
-
 {% endblock %}

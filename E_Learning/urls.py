@@ -23,6 +23,6 @@ urlpatterns = [
     path('',courses_views.course_list),
     path('courses/', include('courses.urls')),
     path('accounts/', include('accounts.urls')),
-    path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls, name='admin'),
     # url(r'^index/$',TemplateView.as_view(template_name='courses/example.html')),
 ]

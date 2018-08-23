@@ -1,8 +1,8 @@
 {% extends 'base_layout.html' %}
 
 {% block content %}
-	<form class="site-form" action="/accounts/signup/" method="post">
-		<h1>Signup Page</h1>
+	<form class="site-form" method="post">
+		<h1>{{user_type}} Signup</h1>
 		{% csrf_token %}
 		{{form}}
 		<button class="btn btn-lg btn-primary btn-block"type="submit" >Signup</button>

@@ -28,6 +28,29 @@
   </head>
 
   <body>
+    <div class="wrapper">
+
+      <nav id="sidebar">
+        <div class="sidebar-header">
+          <h3><a href="{% url 'courses:index' %}"> Learning Center</a></h3>
+        </div>
+
+        <ul class="list-unstyled components">
+          <p>{{ user.username }}{{user_type}}</p>
+          <li class="active">
+            <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Class</a>
+            <ul class="collapse list-unstyled" id="homeSubmenu">
+              <div class = "courses"> 
+                {% for course in courses %}
+                  <li><a href="{% url 'courses:detail' id=course.id %}">{{course.name}}</a></li>
+                {% endfor %}
+              </div>
+            </ul>
+          </li>
+          <li><a href="#">Profile</a></li>
+          <li><a href="#">Discussions</a></li>
+        </ul>
+      </nav>
 <!--     <nav>
       <ul>
           {% if user.is_authenticated %}
@@ -43,9 +66,9 @@
           {% endif %}
       </ul>
     </nav> -->
-    {% block content %}
-    {% endblock %}
-
+      {% block content %}
+      {% endblock %}
+      </div>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 
